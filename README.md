@@ -7,7 +7,7 @@ git clone https://github.com/FarukhAvamov/flight-status-api.git
 Шаг 2: Настройка подключения к базе данных
 Перейдите в директорию проекта:
 cd FlightStatusApi
-Откройте файл appsettings.json, который находится в папке проекта FlightStatusApi.
+Откройте файл appsettings.json, который находится в папке проекта FlighStatusApi.
 Замените значение ConnectionString на вашу фактическую строку подключения к базе данных:
 ```
 {
