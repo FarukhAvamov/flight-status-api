@@ -13,15 +13,14 @@ public class CreateFlightCommandValidator : AbstractValidator<CreateFlightComman
         RuleFor(command => command.Destination).NotEmpty()
             .NotEqual(c => c.Origin)
             .WithMessage("Destination cannot be equal to origin");
-        RuleFor(command => command.Arrival).NotEmpty();
+        RuleFor(command => command.Arrival).NotEmpty()
+            .GreaterThan(c => c.Departure)
+            .WithMessage("Arrival must be greater than Departure.");;
         RuleFor(command => command.Departure).NotEmpty();
         RuleFor(command => command.Status).NotEmpty()
             .IsInEnum().WithMessage("Invalid status value.");
         ;
-        
-        RuleFor(command => command)
-            .Must(command => command.Arrival > command.Departure)
-            .WithMessage("Arrival must be greater than Departure.");
+            
         
     }
 }

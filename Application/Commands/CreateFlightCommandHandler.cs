@@ -10,11 +10,11 @@ namespace Application.Commands;
 public class CreateFlightCommandHandler : ICommandHandler<CreateFlightCommand>
 {
     private readonly IFlightRepository _flightRepository;
-    private readonly CreateFlightCommandValidator _validator;
+    private readonly IValidator<CreateFlightCommand> _validator;
     private readonly ILogger<CreateFlightCommandHandler> _logger;
     private readonly IHttpContextAccessor _accessor;
 
-    public CreateFlightCommandHandler(IFlightRepository flightRepository, CreateFlightCommandValidator validator,
+    public CreateFlightCommandHandler(IFlightRepository flightRepository, IValidator<CreateFlightCommand> validator,
         ILogger<CreateFlightCommandHandler> logger,
         IHttpContextAccessor accessor)
     {

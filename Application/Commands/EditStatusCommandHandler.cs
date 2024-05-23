@@ -1,5 +1,6 @@
 ﻿using Application.Validation;
 using Domain.Domain.AggregateModels.FlightAggregate.cs;
+using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
@@ -10,12 +11,12 @@ public class EditStatusCommandHandler : ICommandHandler<SetFlightStatusCommand>
     private readonly IFlightRepository _flightRepository;
     private readonly ILogger<CreateFlightCommandHandler> _logger;
     private readonly IHttpContextAccessor _accessor;
-    private readonly EditStatusCommandValidator _validator;
+    private readonly IValidator<SetFlightStatusCommand> _validator;
 
 
     public EditStatusCommandHandler(IFlightRepository flightRepository, ILogger<CreateFlightCommandHandler> logger,
         IHttpContextAccessor accessor,
-        EditStatusCommandValidator validator)
+        IValidator<SetFlightStatusCommand> validator)
     {
         _flightRepository = flightRepository;
         _logger = logger;

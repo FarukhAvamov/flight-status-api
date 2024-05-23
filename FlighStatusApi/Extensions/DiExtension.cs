@@ -3,6 +3,7 @@ using Application.Queries;
 using Application.Services;
 using Application.Validation;
 using Domain.Domain.AggregateModels.FlightAggregate.cs;
+using FluentValidation;
 using Infrastructure.Identity;
 using Infrastructure.Repository;
 
@@ -24,7 +25,7 @@ public static class DiExtension
 
         
         builder.Services.AddHttpContextAccessor();
-        builder.Services.AddTransient<CreateFlightCommandValidator>();
-        builder.Services.AddTransient<EditStatusCommandValidator>();
+        builder.Services.AddTransient<IValidator<CreateFlightCommand>,CreateFlightCommandValidator>();
+        builder.Services.AddTransient<IValidator<SetFlightStatusCommand>,EditStatusCommandValidator>();
     }
 }
